@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Delaval.sis.Entity
 {
-    public class Class1
+  public  class EquipoEntity
     {
+
+        public int idEquipo { get; set; }
+        public string nombre { get; set; }
     }
 }

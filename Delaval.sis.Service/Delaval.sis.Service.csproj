@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{14ED7C42-79E0-404B-875F-1CC9F523E672}</ProjectGuid>
+    <ProjectGuid>{3616B231-BD94-4F81-B2F2-9B1890AC22D4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Delaval.sis.Entity</RootNamespace>
-    <AssemblyName>Delaval.sis.Entity</AssemblyName>
+    <RootNamespace>Delaval.sis.Service</RootNamespace>
+    <AssemblyName>Delaval.sis.Service</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,9 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArticuloEntity.cs" />
-    <Compile Include="EquipoEntity.cs" />
+    <Compile Include="ArticuloService.cs" />
+    <Compile Include="EquipoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Delaval.sis.Dao\Delaval.sis.Dao.csproj">
+      <Project>{d0d17d1f-ac4b-4849-b437-da6aca47f61c}</Project>
+      <Name>Delaval.sis.Dao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Delaval.sis.Entity\Delaval.sis.Entity.csproj">
+      <Project>{14ed7c42-79e0-404b-875f-1cc9f523e672}</Project>
+      <Name>Delaval.sis.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -45,14 +45,53 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Equipos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Equipos.Designer.cs">
+      <DependentUpon>Equipos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListEquipos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListEquipos.Designer.cs">
+      <DependentUpon>ListEquipos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListModelo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListModelo.Designer.cs">
+      <DependentUpon>ListModelo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MantenimientoArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MantenimientoArticulos.Designer.cs">
+      <DependentUpon>MantenimientoArticulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Equipos.resx">
+      <DependentUpon>Equipos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListEquipos.resx">
+      <DependentUpon>ListEquipos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListModelo.resx">
+      <DependentUpon>ListModelo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MantenimientoArticulos.resx">
+      <DependentUpon>MantenimientoArticulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -74,6 +113,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Delaval.sis.Entity\Delaval.sis.Entity.csproj">
+      <Project>{14ed7c42-79e0-404b-875f-1cc9f523e672}</Project>
+      <Name>Delaval.sis.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Delaval.sis.Service\Delaval.sis.Service.csproj">
+      <Project>{3616b231-bd94-4f81-b2f2-9b1890ac22d4}</Project>
+      <Name>Delaval.sis.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

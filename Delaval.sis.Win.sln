@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delaval.sis.Win", "Delaval.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delaval.sis.Entity", "Delaval.sis.Entity\Delaval.sis.Entity.csproj", "{14ED7C42-79E0-404B-875F-1CC9F523E672}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delaval.sis.Dao", "Delaval.sis.Dao\Delaval.sis.Dao.csproj", "{D0D17D1F-AC4B-4849-B437-DA6ACA47F61C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delaval.sis.Service", "Delaval.sis.Service\Delaval.sis.Service.csproj", "{3616B231-BD94-4F81-B2F2-9B1890AC22D4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{14ED7C42-79E0-404B-875F-1CC9F523E672}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14ED7C42-79E0-404B-875F-1CC9F523E672}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14ED7C42-79E0-404B-875F-1CC9F523E672}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0D17D1F-AC4B-4849-B437-DA6ACA47F61C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0D17D1F-AC4B-4849-B437-DA6ACA47F61C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0D17D1F-AC4B-4849-B437-DA6ACA47F61C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0D17D1F-AC4B-4849-B437-DA6ACA47F61C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3616B231-BD94-4F81-B2F2-9B1890AC22D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3616B231-BD94-4F81-B2F2-9B1890AC22D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3616B231-BD94-4F81-B2F2-9B1890AC22D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3616B231-BD94-4F81-B2F2-9B1890AC22D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
