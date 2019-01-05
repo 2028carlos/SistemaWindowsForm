@@ -14,9 +14,16 @@ namespace Delaval.sis.Win
     public partial class MantenimientoArticulos : Form
     {
         ArticuloService ars = new ArticuloService();
+        ModeloService md = new ModeloService();
         EquipoService es = new EquipoService();
+
         List<EquipoEntity> listaEquipo;
+        List<ModeloEntity> listaModelo;
+
         ArticuloEntity pe;
+        ModeloEntity me;
+        EquipoEntity eq;
+
         public MantenimientoArticulos()
         {
             InitializeComponent();
@@ -42,9 +49,28 @@ namespace Delaval.sis.Win
             cboEquipo.ValueMember = "Key";
         }
 
+        //LISTA COMBO MODELO
+        public void ListarComboModelo()
+        {
+            listaModelo = new List<ModeloEntity>();
+            listaModelo = md.listarModelos();
+            Dictionary<int, String> dicTemp = new Dictionary<int, string>();
+
+            foreach (var entidad in listaModelo)
+            {
+
+                dicTemp.Add(Convert.ToInt32(entidad.idModelos), entidad.NombreModelo);
+
+            }
+
+            cboModelo.DataSource = new BindingSource(dicTemp, null);
+
+            cboModelo.DisplayMember = "Value";
+            cboModelo.ValueMember = "Key";
+        }
 
 
-        //GUARDAR DATOS 
+        //GUARDAR DATOS   Articulos
 
         public String Guardar(int op)
         {
@@ -52,7 +78,7 @@ namespace Delaval.sis.Win
             pe = new ArticuloEntity();
 
             pe.Equipo = Convert.ToInt32(cboEquipo.SelectedValue);
-            pe.Modelo = Convert.ToInt32(cboModelo.Text);
+            pe.Modelo = Convert.ToInt32(cboModelo.SelectedValue);
             pe.codigo = Convert.ToInt32(txtCodigo.Text);
             pe.descripcion = txtDescripcion.Text;
             pe.unidadmedida = cboUnidad.Text;
@@ -71,6 +97,35 @@ namespace Delaval.sis.Win
                 resultado = "Actualizado";
             }
             if (ars.InsertandUpdateAriculo(pe, op) == 1)
+            {
+                resultado = "Datos agregados correctamente. ";
+            }
+            return resultado;
+
+        }
+
+        //GUARDAR DATOS   Equipos
+
+        public String GuardarEquipos(int op)
+        {
+            var resultado = "";
+            eq = new EquipoEntity();
+
+            //eq.idEquipo = Convert.ToInt32(txtCodEquipo.Text);
+            eq.nombre = txtEquipo.Text;
+           
+
+
+
+            if (op == 0)
+            {
+                resultado = "Insertado";
+            }
+            else
+            {
+                resultado = "Actualizado";
+            }
+            if (es.InsertandUpdateEquipo(eq, op) == 1)
             {
                 resultado = "Datos agregados correctamente. ";
             }
@@ -99,11 +154,17 @@ namespace Delaval.sis.Win
         private void MantenimientoArticulos_Load(object sender, EventArgs e)
         {
             ListarComboEquipo();
+            ListarComboModelo();
         }
 
         private void btnGuardarArticulos_Click(object sender, EventArgs e)
         {
             Guardar(0);
+        }
+
+        private void btnGuardarEquipo_Click(object sender, EventArgs e)
+        {
+            GuardarEquipos(0);
         }
     }
 }

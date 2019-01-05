@@ -100,7 +100,7 @@ namespace Delaval.sis.Win
 
         private void fileMenu_Click(object sender, EventArgs e)
         {
-            Equipos eq = new Equipos();
+            Filtro eq = new Filtro();
             eq.MdiParent = this;
             eq.Show();
         }
