@@ -1,6 +1,6 @@
 ﻿namespace Delaval.sis.Win
 {
-    partial class Equipos
+    partial class Filtro
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cboModelo = new System.Windows.Forms.ComboBox();
+            this.cboProgramacion = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -37,26 +37,26 @@
             this.unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.programa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.cboEquipos = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // cboModelo
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(293, 55);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(205, 24);
-            this.comboBox1.TabIndex = 1;
+            this.cboModelo.FormattingEnabled = true;
+            this.cboModelo.Location = new System.Drawing.Point(293, 55);
+            this.cboModelo.Name = "cboModelo";
+            this.cboModelo.Size = new System.Drawing.Size(205, 24);
+            this.cboModelo.TabIndex = 1;
             // 
-            // comboBox2
+            // cboProgramacion
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(532, 55);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(187, 24);
-            this.comboBox2.TabIndex = 2;
+            this.cboProgramacion.FormattingEnabled = true;
+            this.cboProgramacion.Location = new System.Drawing.Point(532, 55);
+            this.cboProgramacion.Name = "cboProgramacion";
+            this.cboProgramacion.Size = new System.Drawing.Size(187, 24);
+            this.cboProgramacion.TabIndex = 2;
             // 
             // dataGridView1
             // 
@@ -105,13 +105,13 @@
             this.precio.HeaderText = "Precio Unitario";
             this.precio.Name = "precio";
             // 
-            // comboBox3
+            // cboEquipos
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(45, 55);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(217, 24);
-            this.comboBox3.TabIndex = 4;
+            this.cboEquipos.FormattingEnabled = true;
+            this.cboEquipos.Location = new System.Drawing.Point(45, 55);
+            this.cboEquipos.Name = "cboEquipos";
+            this.cboEquipos.Size = new System.Drawing.Size(217, 24);
+            this.cboEquipos.TabIndex = 4;
             // 
             // button1
             // 
@@ -122,19 +122,20 @@
             this.button1.Text = "Exportar";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // Equipos
+            // Filtro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1041, 563);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.cboEquipos);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Name = "Equipos";
+            this.Controls.Add(this.cboProgramacion);
+            this.Controls.Add(this.cboModelo);
+            this.Name = "Filtro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Equipos";
+            this.Load += new System.EventHandler(this.Filtro_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -142,10 +143,10 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cboModelo;
+        private System.Windows.Forms.ComboBox cboProgramacion;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cboEquipos;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;

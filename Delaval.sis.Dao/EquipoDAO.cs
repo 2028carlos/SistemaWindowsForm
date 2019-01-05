@@ -14,7 +14,7 @@ namespace Delaval.sis.Dao
 
         MySqlCommand cmdCliente;
         MySqlDataReader lector;
-
+     
 
         public List<EquipoEntity> listarEquipo()
         {
@@ -48,6 +48,40 @@ namespace Delaval.sis.Dao
                 throw;
             }
             return lista;
+        }
+        //GUARDAR DATOS
+        public int InsertandUpdateEquipo(EquipoEntity c, int op)
+        {
+            string sql = "sp_equipo_add";
+            if (op == 1)
+            {
+                sql = "sp_person_update";
+            }
+            int valor = 0;
+
+            cmdCliente = new MySqlCommand();
+            cmdCliente.CommandType = CommandType.StoredProcedure;
+            cmdCliente.CommandText = sql;
+            cmdCliente.Connection = cn.abrirConexion();
+
+            //cmdCliente.Parameters.AddWithValue("cod", c.codigo);
+            cmdCliente.Parameters.AddWithValue("name", c.nombre ?? "");
+          
+
+
+
+
+            int i = cmdCliente.ExecuteNonQuery();
+            if (i > 0)
+            {
+                valor = 1;
+            }
+            else
+            {
+                valor = 0;
+            }
+            cmdCliente.Parameters.Clear();
+            return valor;
         }
 
     }

@@ -54,18 +54,18 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnGuardarEquipo = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtEquipo = new System.Windows.Forms.TextBox();
+            this.txtCodEquipo = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button9 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtGuardarModelo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtCodModelo = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.Articulos.SuspendLayout();
@@ -216,9 +216,6 @@
             // cboModelo
             // 
             this.cboModelo.FormattingEnabled = true;
-            this.cboModelo.Items.AddRange(new object[] {
-            "1",
-            "2"});
             this.cboModelo.Location = new System.Drawing.Point(98, 66);
             this.cboModelo.Name = "cboModelo";
             this.cboModelo.Size = new System.Drawing.Size(156, 24);
@@ -311,11 +308,11 @@
             // 
             this.groupBox3.Controls.Add(this.button8);
             this.groupBox3.Controls.Add(this.button7);
-            this.groupBox3.Controls.Add(this.button4);
+            this.groupBox3.Controls.Add(this.btnGuardarEquipo);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.textBox8);
-            this.groupBox3.Controls.Add(this.textBox6);
+            this.groupBox3.Controls.Add(this.txtEquipo);
+            this.groupBox3.Controls.Add(this.txtCodEquipo);
             this.groupBox3.Location = new System.Drawing.Point(18, 47);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(311, 186);
@@ -342,14 +339,15 @@
             this.button7.Text = "Eliminar";
             this.button7.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnGuardarEquipo
             // 
-            this.button4.Location = new System.Drawing.Point(202, 144);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 30);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Guardar";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnGuardarEquipo.Location = new System.Drawing.Point(202, 144);
+            this.btnGuardarEquipo.Name = "btnGuardarEquipo";
+            this.btnGuardarEquipo.Size = new System.Drawing.Size(75, 30);
+            this.btnGuardarEquipo.TabIndex = 8;
+            this.btnGuardarEquipo.Text = "Guardar";
+            this.btnGuardarEquipo.UseVisualStyleBackColor = true;
+            this.btnGuardarEquipo.Click += new System.EventHandler(this.btnGuardarEquipo_Click);
             // 
             // label12
             // 
@@ -369,28 +367,29 @@
             this.label8.TabIndex = 6;
             this.label8.Text = "Id:";
             // 
-            // textBox8
+            // txtEquipo
             // 
-            this.textBox8.Location = new System.Drawing.Point(70, 102);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(207, 22);
-            this.textBox8.TabIndex = 6;
+            this.txtEquipo.Location = new System.Drawing.Point(70, 102);
+            this.txtEquipo.Name = "txtEquipo";
+            this.txtEquipo.Size = new System.Drawing.Size(207, 22);
+            this.txtEquipo.TabIndex = 6;
             // 
-            // textBox6
+            // txtCodEquipo
             // 
-            this.textBox6.Location = new System.Drawing.Point(70, 56);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(207, 22);
-            this.textBox6.TabIndex = 3;
+            this.txtCodEquipo.Location = new System.Drawing.Point(70, 56);
+            this.txtCodEquipo.Name = "txtCodEquipo";
+            this.txtCodEquipo.ReadOnly = true;
+            this.txtCodEquipo.Size = new System.Drawing.Size(207, 22);
+            this.txtCodEquipo.TabIndex = 3;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.button9);
             this.groupBox2.Controls.Add(this.button5);
             this.groupBox2.Controls.Add(this.button6);
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.txtGuardarModelo);
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.textBox7);
+            this.groupBox2.Controls.Add(this.txtCodModelo);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Location = new System.Drawing.Point(373, 47);
             this.groupBox2.Name = "groupBox2";
@@ -427,12 +426,12 @@
             this.button6.Text = "Eliminar";
             this.button6.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtGuardarModelo
             // 
-            this.textBox1.Location = new System.Drawing.Point(95, 102);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(192, 22);
-            this.textBox1.TabIndex = 5;
+            this.txtGuardarModelo.Location = new System.Drawing.Point(95, 102);
+            this.txtGuardarModelo.Name = "txtGuardarModelo";
+            this.txtGuardarModelo.Size = new System.Drawing.Size(192, 22);
+            this.txtGuardarModelo.TabIndex = 5;
             // 
             // label10
             // 
@@ -443,12 +442,13 @@
             this.label10.TabIndex = 1;
             this.label10.Text = "Id:";
             // 
-            // textBox7
+            // txtCodModelo
             // 
-            this.textBox7.Location = new System.Drawing.Point(95, 54);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(192, 22);
-            this.textBox7.TabIndex = 4;
+            this.txtCodModelo.Location = new System.Drawing.Point(95, 54);
+            this.txtCodModelo.Name = "txtCodModelo";
+            this.txtCodModelo.ReadOnly = true;
+            this.txtCodModelo.Size = new System.Drawing.Size(192, 22);
+            this.txtCodModelo.TabIndex = 4;
             // 
             // label11
             // 
@@ -465,6 +465,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(725, 392);
             this.Controls.Add(this.tabControl1);
+            this.MaximizeBox = false;
             this.Name = "MantenimientoArticulos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MantenimientoArticulos";
@@ -504,8 +505,8 @@
         private System.Windows.Forms.ComboBox cboModelo;
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtCodModelo;
+        private System.Windows.Forms.TextBox txtCodEquipo;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnListarArticulos;
@@ -513,15 +514,15 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnGuardarEquipo;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtEquipo;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtGuardarModelo;
         private System.Windows.Forms.ComboBox cboPrograma;
     }
 }

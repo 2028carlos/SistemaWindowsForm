@@ -47,6 +47,7 @@
     <Compile Include="ArticuloDAO.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="EquipoDAO.cs" />
+    <Compile Include="ModeloDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
