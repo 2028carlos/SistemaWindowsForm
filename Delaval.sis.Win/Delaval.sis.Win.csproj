@@ -51,6 +51,12 @@
     <Compile Include="Filtro.Designer.cs">
       <DependentUpon>Filtro.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListArticulos.Designer.cs">
+      <DependentUpon>ListArticulos.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListEquipos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +85,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Filtro.resx">
       <DependentUpon>Filtro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListArticulos.resx">
+      <DependentUpon>ListArticulos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListEquipos.resx">
       <DependentUpon>ListEquipos.cs</DependentUpon>

@@ -33,7 +33,7 @@ namespace Delaval.sis.Dao
                 {
                     p = new EquipoEntity();
                    
-                    p.idEquipo = Convert.ToInt32(lector[0]);
+                    p.idEquipo = lector[0].ToString();
                     p.nombre = lector[1].ToString();
                    
 
@@ -49,13 +49,62 @@ namespace Delaval.sis.Dao
             }
             return lista;
         }
+
+
+        //buscar por nombre 
+     
+        public List<EquipoEntity> listarEquipoXNombre(EquipoEntity c)
+        {
+            List<EquipoEntity> lista = new List<EquipoEntity>();
+
+            EquipoEntity p;
+          
+            try
+            {
+                cmdCliente = new MySqlCommand("sp_equipo_filtarbyName");
+                cmdCliente.CommandType = CommandType.StoredProcedure;
+                cmdCliente.Connection = cn.abrirConexion();
+                cmdCliente.Parameters.AddWithValue("name", c.nombre);
+
+
+                lector = cmdCliente.ExecuteReader();
+
+
+
+                while (lector.Read())
+                {
+
+
+
+
+                    p = new EquipoEntity();
+                   
+                    p.idEquipo = lector[0].ToString();
+                    p.nombre = lector[1].ToString();
+                  
+
+                   
+                    lista.Add(p);
+                }
+            }
+            catch (Exception)
+            {
+
+                //MessageBox.Show("Busqueda Invalida", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return lista;
+        }
+
+
+
         //GUARDAR DATOS
         public int InsertandUpdateEquipo(EquipoEntity c, int op)
         {
             string sql = "sp_equipo_add";
             if (op == 1)
             {
-                sql = "sp_person_update";
+                sql = "sp_equipo_update";
             }
             int valor = 0;
 
@@ -64,7 +113,7 @@ namespace Delaval.sis.Dao
             cmdCliente.CommandText = sql;
             cmdCliente.Connection = cn.abrirConexion();
 
-            //cmdCliente.Parameters.AddWithValue("cod", c.codigo);
+            cmdCliente.Parameters.AddWithValue("id", c.idEquipo);
             cmdCliente.Parameters.AddWithValue("name", c.nombre ?? "");
           
 

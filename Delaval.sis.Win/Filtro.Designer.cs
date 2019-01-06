@@ -39,6 +39,7 @@
             this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cboEquipos = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -122,11 +123,21 @@
             this.button1.Text = "Exportar";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(735, 48);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(115, 36);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Buscar";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // Filtro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1041, 563);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cboEquipos);
             this.Controls.Add(this.dataGridView1);
@@ -154,5 +165,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn unidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn programa;
         private System.Windows.Forms.DataGridViewTextBoxColumn precio;
+        private System.Windows.Forms.Button button2;
     }
 }

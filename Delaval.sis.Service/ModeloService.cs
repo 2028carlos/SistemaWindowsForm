@@ -14,5 +14,15 @@ namespace Delaval.sis.Service
         {
             return md.listarModelos();
         }
+
+        public List<ModeloEntity> listarModeloXNombre(ModeloEntity c)
+        {
+            return md.listarModeloXNombre(c);
+        }
+
+        public int InsertandUpdateModelo(ModeloEntity c, int op)
+        {
+            return md.InsertandUpdateModelo(c, op);
+        }
     }
 }

@@ -111,5 +111,10 @@ namespace Delaval.sis.Win
             ma.MdiParent = this;
             ma.Show();
         }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

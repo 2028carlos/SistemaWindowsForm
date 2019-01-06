@@ -9,7 +9,7 @@ namespace Delaval.sis.Entity
   public  class EquipoEntity
     {
 
-        public int idEquipo { get; set; }
+        public string idEquipo { get; set; }
         public string nombre { get; set; }
     }
 }

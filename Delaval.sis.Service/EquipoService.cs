@@ -18,5 +18,10 @@ namespace Delaval.sis.Service
         {
             return ed.InsertandUpdateEquipo(c, op);
         }
+
+        public List<EquipoEntity> listarEquipoXNombre(EquipoEntity c)
+        {
+            return ed.listarEquipoXNombre(c);
+        }
     }
 }

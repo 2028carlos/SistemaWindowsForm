@@ -15,5 +15,15 @@ namespace Delaval.sis.Service
             return ar.InsertandUpdateArticulo(c,op);
         }
 
+        public List<ArticuloEntity> listarArticulo()
+        {
+            return ar.listarArticulo();
+        }
+
+        public List<ArticuloEntity> listarArticulosXdescripcion(ArticuloEntity c)
+        {
+            return ar.listarArticulosXdescripcion(c);
+        }
+
     }
 }

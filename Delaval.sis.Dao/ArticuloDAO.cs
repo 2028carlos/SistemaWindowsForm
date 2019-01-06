@@ -20,128 +20,102 @@ namespace Delaval.sis.Dao
         //Lista
 
 
-        //public List<PersonEntity> listarPerson()
-        //{
-        //    List<PersonEntity> lista = new List<PersonEntity>();
-        //    PersonEntity p;
-        //    origenEntity or;
-        //    levelEntity le;
-        //    try
-        //    {
-        //        cmdCliente = new MySqlCommand("sp_person_list");
-        //        cmdCliente.CommandType = CommandType.StoredProcedure;
-        //        cmdCliente.Connection = cn.abrirConexion();
+        public List<ArticuloEntity> listarArticulo()
+        {
+            List<ArticuloEntity> lista = new List<ArticuloEntity>();
+            ArticuloEntity p;
+            ModeloEntity or;
+            EquipoEntity le;
+            try
+            {
+                cmdCliente = new MySqlCommand("sp_articulo_list");
+                cmdCliente.CommandType = CommandType.StoredProcedure;
+                cmdCliente.Connection = cn.abrirConexion();
 
-        //        lector = cmdCliente.ExecuteReader();
-        //        while (lector.Read())
-        //        {
-        //            p = new PersonEntity();
-        //            or = new origenEntity();
-        //            le = new levelEntity();
-        //            p.personid = lector[0].ToString();
-        //            p.name = lector[1].ToString();
-        //            p.lastname = lector[2].ToString();
+                lector = cmdCliente.ExecuteReader();
+                while (lector.Read())
+                {
+                    p = new ArticuloEntity();
+                    or = new ModeloEntity();
+                    le = new EquipoEntity();
+                    p.idArticulo = lector[0].ToString();
+                    p.codigo = Convert.ToInt32(lector[1]) ;
+                    p.descripcion = lector[2].ToString();
+                    p.unidadmedida = lector[3].ToString();
 
-        //            p.birthdate = lector[3].ToString();
-        //            p.dni = lector[4].ToString();
-        //            p.occupation = lector[5].ToString();
+                    p.unidad = Convert.ToInt32(lector[4]); 
+                    p.programa = lector[5].ToString();
+                    p.precio = Convert.ToDecimal(lector[6]); 
+                    le.nombre = lector[7].ToString();
+                    p.Equipo = le;
+
+                    or.NombreModelo = lector[8].ToString();
+                    p.Modelo = or;
 
 
-        //            p.address = lector[6].ToString();
-        //            p.phone = lector[7].ToString();
-        //            p.cellphone = lector[8].ToString();
-        //            p.email = lector[9].ToString();
-        //            p.promotion = lector[10].ToString();
-        //            p.contract = lector[11].ToString();
-        //            p.e_avanzado = lector[12].ToString();
-        //            p.e_firstweekend = lector[13].ToString();
-        //            p.e_secondweekend = lector[14].ToString();
-        //            p.observations = lector[15].ToString();
+                    lista.Add(p);
+                }
+            }
+            catch (Exception)
+            {
 
-        //            le.names = lector[16].ToString();
-        //            p.levelid = le;
-        //            or.name = lector[17].ToString();
-        //            p.origenid = or;
+                throw;
+            }
+            return lista;
+        }
+        ////Buscar por descripcion
+        public List<ArticuloEntity> listarArticulosXdescripcion(ArticuloEntity c)
+        {
+            List<ArticuloEntity> lista = new List<ArticuloEntity>();
 
-        //            p.enroladoId = Convert.ToInt32(lector[18]);
-        //            p.promotionenrolador = lector[19].ToString();
-        //            lista.Add(p);
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
+            ArticuloEntity p;
+            ModeloEntity or;
+            EquipoEntity le;
+            try
+            {
+                cmdCliente = new MySqlCommand("sp_articulo_filtrarbydescripcion");
+                cmdCliente.CommandType = CommandType.StoredProcedure;
+                cmdCliente.Connection = cn.abrirConexion();
+                cmdCliente.Parameters.AddWithValue("des", c.descripcion);
+              
 
-        //        throw;
-        //    }
-        //    return lista;
-        //}
-        ////Buscar por apellido
-        //public List<PersonEntity> listarClientesx(PersonEntity c)
-        //{
-        //    List<PersonEntity> lista = new List<PersonEntity>();
-
-        //    PersonEntity p;
-        //    origenEntity or;
-        //    levelEntity le;
-        //    try
-        //    {
-        //        cmdCliente = new MySqlCommand("sp_person_buscaXlastname");
-        //        cmdCliente.CommandType = CommandType.StoredProcedure;
-        //        cmdCliente.Connection = cn.abrirConexion();
-        //        cmdCliente.Parameters.AddWithValue("ape", c.lastname);
-        //        cmdCliente.Parameters.AddWithValue("nombre", c.name);
-
-        //        lector = cmdCliente.ExecuteReader();
+                lector = cmdCliente.ExecuteReader();
 
 
 
-        //        while (lector.Read())
-        //        {
+                while (lector.Read())
+                {
 
 
 
-        //            p = new PersonEntity();
-        //            or = new origenEntity();
-        //            le = new levelEntity();
+                   
+                    p = new ArticuloEntity();
+                    or = new ModeloEntity();
+                    le = new EquipoEntity();
+                    p.idArticulo = lector[0].ToString();
+                    p.codigo = Convert.ToInt32(lector[1]); 
+                    p.descripcion = lector[2].ToString();
+                    p.unidadmedida = lector[3].ToString();
 
-        //            p.personid = lector[0].ToString();
-        //            p.name = lector[1].ToString();
-        //            p.lastname = lector[2].ToString();
+                    p.unidad = Convert.ToInt32(lector[4]);
+                    p.programa = lector[5].ToString();
+                    p.precio = Convert.ToDecimal(lector[6].ToString());
+                    le.nombre = lector[7].ToString();
+                    p.Equipo = le;
 
-        //            p.birthdate = lector[3].ToString();
-        //            p.dni = lector[4].ToString();
-        //            p.occupation = lector[5].ToString();
+                    or.NombreModelo = lector[8].ToString();
+                    p.Modelo = or;
+                    lista.Add(p);
+                }
+            }
+            catch (Exception)
+            {
 
+                //MessageBox.Show("Busqueda Invalida", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-        //            p.address = lector[6].ToString();
-        //            p.phone = lector[7].ToString();
-        //            p.cellphone = lector[8].ToString();
-        //            p.email = lector[9].ToString();
-        //            p.promotion = lector[10].ToString();
-        //            p.contract = lector[11].ToString();
-        //            p.e_avanzado = lector[12].ToString();
-        //            p.e_firstweekend = lector[13].ToString();
-        //            p.e_secondweekend = lector[14].ToString();
-        //            p.observations = lector[15].ToString();
-
-        //            le.names = lector[16].ToString();
-        //            p.levelid = le;
-        //            or.name = lector[17].ToString();
-        //            p.origenid = or;
-        //            p.enroladoId = Convert.ToInt32(lector[18]);
-        //            p.promotionenrolador = lector[19].ToString();
-
-        //            lista.Add(p);
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //        //MessageBox.Show("Busqueda Invalida", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-        //    }
-        //    return lista;
-        //}
+            }
+            return lista;
+        }
 
         //// Busca por dni
         //public List<PersonEntity> BuscaXDni(PersonEntity c)
@@ -201,13 +175,13 @@ namespace Delaval.sis.Dao
         //    }
         //    return lista;
         //}
-       
+
         public int InsertandUpdateArticulo(ArticuloEntity c, int op)
         {
             string sql = "sp_articulos_add";
             if (op == 1)
             {
-                sql = "sp_person_update";
+                sql = "sp_articulo_update";
             }
             int valor = 0;
 
@@ -216,14 +190,15 @@ namespace Delaval.sis.Dao
             cmdCliente.CommandText = sql;
             cmdCliente.Connection = cn.abrirConexion();
 
-            cmdCliente.Parameters.AddWithValue("cod", c.codigo);
-            cmdCliente.Parameters.AddWithValue("des", c.descripcion ?? "");
-            cmdCliente.Parameters.AddWithValue("unimed", c.unidadmedida ?? "");
-            cmdCliente.Parameters.AddWithValue("uni", c.unidad );
-            cmdCliente.Parameters.AddWithValue("progra", c.programa ?? "");
-            cmdCliente.Parameters.AddWithValue("precio", c.precio);
-            cmdCliente.Parameters.AddWithValue("idEqu", c.Equipo );
-            cmdCliente.Parameters.AddWithValue("idMod", c.Modelo );
+            cmdCliente.Parameters.AddWithValue("id", c.idArticulo);
+            cmdCliente.Parameters.AddWithValue("cod", c.codigo );
+            cmdCliente.Parameters.AddWithValue("des", c.descripcion  ?? "");
+            cmdCliente.Parameters.AddWithValue("unimed", c.unidadmedida ?? "" );
+            cmdCliente.Parameters.AddWithValue("uni", c.unidad  );
+            cmdCliente.Parameters.AddWithValue("progra", c.programa ?? "" );
+            cmdCliente.Parameters.AddWithValue("precio", c.precio );
+            cmdCliente.Parameters.AddWithValue("idEqu", c.Equipo.nombre );
+            cmdCliente.Parameters.AddWithValue("idMod", c.Modelo.NombreModelo );
            
             
 

@@ -34,7 +34,7 @@ namespace Delaval.sis.Dao
                 {
                     p = new ModeloEntity();
 
-                    p.idModelos= Convert.ToInt32(lector[0]);
+                    p.idModelos= lector[0].ToString();
                     p.NombreModelo = lector[1].ToString();
 
 
@@ -52,6 +52,86 @@ namespace Delaval.sis.Dao
         }
 
 
+        //buscar por nombre 
+
+        public List<ModeloEntity> listarModeloXNombre(ModeloEntity c)
+        {
+            List<ModeloEntity> lista = new List<ModeloEntity>();
+
+            ModeloEntity p;
+
+            try
+            {
+                cmdCliente = new MySqlCommand("sp_modelofiltrabyNombre");
+                cmdCliente.CommandType = CommandType.StoredProcedure;
+                cmdCliente.Connection = cn.abrirConexion();
+                cmdCliente.Parameters.AddWithValue("name", c.NombreModelo);
+
+
+                lector = cmdCliente.ExecuteReader();
+
+
+
+                while (lector.Read())
+                {
+
+
+
+
+                    p = new ModeloEntity();
+
+                    p.idModelos = lector[0].ToString();
+                    p.NombreModelo = lector[1].ToString();
+
+
+
+                    lista.Add(p);
+                }
+            }
+            catch (Exception)
+            {
+
+                //MessageBox.Show("Busqueda Invalida", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return lista;
+        }
+
+
+        //GUARDAR DATOS
+        public int InsertandUpdateModelo(ModeloEntity c, int op)
+        {
+            string sql = "sp_modelo_add";
+            if (op == 1)
+            {
+                sql = "sp_modelo_update";
+            }
+            int valor = 0;
+
+            cmdCliente = new MySqlCommand();
+            cmdCliente.CommandType = CommandType.StoredProcedure;
+            cmdCliente.CommandText = sql;
+            cmdCliente.Connection = cn.abrirConexion();
+
+            cmdCliente.Parameters.AddWithValue("id", c.idModelos);
+            cmdCliente.Parameters.AddWithValue("name", c.NombreModelo ?? "");
+
+
+
+
+
+            int i = cmdCliente.ExecuteNonQuery();
+            if (i > 0)
+            {
+                valor = 1;
+            }
+            else
+            {
+                valor = 0;
+            }
+            cmdCliente.Parameters.Clear();
+            return valor;
+        }
 
     }
 }

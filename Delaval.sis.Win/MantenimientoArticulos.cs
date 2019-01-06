@@ -76,15 +76,33 @@ namespace Delaval.sis.Win
         {
             var resultado = "";
             pe = new ArticuloEntity();
+            pe.idArticulo = txtIdArticulo.Text;
 
-            pe.Equipo = Convert.ToInt32(cboEquipo.SelectedValue);
-            pe.Modelo = Convert.ToInt32(cboModelo.SelectedValue);
-            pe.codigo = Convert.ToInt32(txtCodigo.Text);
+            EquipoEntity eq = new EquipoEntity();
+            eq.nombre = cboEquipo.SelectedValue.ToString();
+            pe.Equipo = eq;
+
+            ModeloEntity md = new ModeloEntity();
+            md.NombreModelo = cboModelo.SelectedValue.ToString();
+            pe.Modelo = md;
+
+            if (txtCodigo.Text.Equals("") || txtPrecio.Text.Equals("") || txtUnidad.Text.Equals(""))
+            {
+                pe.codigo = 0;
+                pe.precio = 0;
+                pe.unidad = 0;
+            }
+            else
+            {
+                pe.codigo = Convert.ToInt32(txtCodigo.Text);
+                pe.precio = Convert.ToDecimal(txtPrecio.Text);
+                pe.unidad = Convert.ToInt32(txtUnidad.Text);
+            }
+
             pe.descripcion = txtDescripcion.Text;
             pe.unidadmedida = cboUnidad.Text;
-            pe.unidad = Convert.ToInt32(txtUnidad.Text);
+
             pe.programa = cboPrograma.Text;
-            pe.precio = Convert.ToDecimal(txtPrecio.Text);
 
 
 
@@ -111,11 +129,8 @@ namespace Delaval.sis.Win
             var resultado = "";
             eq = new EquipoEntity();
 
-            //eq.idEquipo = Convert.ToInt32(txtCodEquipo.Text);
+            eq.idEquipo = txtCodEquipo.Text;
             eq.nombre = txtEquipo.Text;
-           
-
-
 
             if (op == 0)
             {
@@ -134,6 +149,66 @@ namespace Delaval.sis.Win
         }
 
 
+
+        //GUARDAR DATOS   Modelo
+
+        public String GuardarModelos(int op)
+        {
+            var resultado = "";
+            me = new ModeloEntity();
+
+
+
+            me.idModelos = txtCodModelo.Text;
+            me.NombreModelo = txtNombreModelo.Text;
+
+            if (op == 0)
+            {
+                resultado = "Insertado";
+            }
+            else
+            {
+                resultado = "Actualizado";
+            }
+            if (md.InsertandUpdateModelo(me, op) == 1)
+            {
+                resultado = "Datos agregados correctamente. ";
+            }
+            return resultado;
+
+        }
+
+
+        //LIMPIAR caja de texto  ARTICULO
+
+        public void limpiar()
+        {
+            txtIdArticulo.Text = "";
+            cboEquipo.Text = "";
+            cboModelo.Text = "";
+            txtCodigo.Text = "";
+            txtDescripcion.Text = "";
+            cboUnidad.Text = "";
+            txtUnidad.Text = "";
+            cboPrograma.Text = "";
+            txtPrecio.Text = "";
+        }
+
+        //lIMPIAR CAJA EQUIPO
+
+        public void limpiarEquipo()
+        {
+            txtCodEquipo.Text = "";
+            txtEquipo.Text = "";
+        }
+
+        //LIMPIAR MODELO 
+        public void limpiarModelo()
+        {
+            txtCodModelo.Text = "";
+            txtNombreModelo.Text = "";
+        }
+
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -142,29 +217,148 @@ namespace Delaval.sis.Win
         private void button8_Click(object sender, EventArgs e)
         {
             ListEquipos lq = new ListEquipos();
+            lq.pasado += new ListEquipos.pasarEquipo(ejecutarListaEquipo);
+
+
             lq.Show();
         }
+        public void ejecutarListaEquipo(EquipoEntity c)
+        {
+
+            txtCodEquipo.Text = c.idEquipo.ToString();
+            txtEquipo.Text = c.nombre.ToString();
+
+
+
+        }
+
+
+
+
 
         private void button9_Click(object sender, EventArgs e)
         {
             ListModelo lm = new ListModelo();
+            lm.pasado += new ListModelo.pasarModelo(EjecutarListaModelo);
             lm.Show();
+        }
+
+        public void EjecutarListaModelo(ModeloEntity m)
+        {
+            txtCodModelo.Text = m.idModelos;
+            txtNombreModelo.Text = m.NombreModelo.ToString();
         }
 
         private void MantenimientoArticulos_Load(object sender, EventArgs e)
         {
             ListarComboEquipo();
             ListarComboModelo();
+            cboEquipo.Text = "";
+            cboModelo.Text = "";
         }
 
         private void btnGuardarArticulos_Click(object sender, EventArgs e)
         {
-            Guardar(0);
+
+            if (cboEquipo.Text.Equals("") || cboModelo.Text.Equals(""))
+            {
+                MessageBox.Show("Hay campos vacios revizar!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                if (txtIdArticulo.Text.Equals(""))
+                {
+                    MessageBox.Show(Guardar(0), "", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
+                else
+                {
+                    MessageBox.Show(Guardar(1), "", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
+                limpiar();
+
+            }
+
+
+
+
         }
 
         private void btnGuardarEquipo_Click(object sender, EventArgs e)
         {
-            GuardarEquipos(0);
+
+            if (txtEquipo.Text.Equals(""))
+            {
+                MessageBox.Show("El campo no puede ser vacio", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                if (txtCodEquipo.Text.Equals(""))
+                {
+                    MessageBox.Show(GuardarEquipos(0), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+                }
+                else
+                {
+                    MessageBox.Show(GuardarEquipos(1), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+                }
+                ListarComboEquipo();
+                limpiarEquipo();
+
+
+
+
+            }
+
+
+        }
+
+        private void btnListarArticulos_Click(object sender, EventArgs e)
+        {
+            ListArticulos a = new ListArticulos();
+            a.pasado += new ListArticulos.pasar(ejecutarListaArticulo);
+            a.Show();
+        }
+
+        public void ejecutarListaArticulo(ArticuloEntity c)
+        {
+
+            txtIdArticulo.Text = c.idArticulo.ToString();
+            txtCodigo.Text = c.codigo.ToString();
+            txtDescripcion.Text = c.descripcion;
+            cboUnidad.Text = c.unidadmedida;
+
+            txtUnidad.Text = c.unidad.ToString(); ;
+            cboPrograma.Text = c.programa;
+            txtPrecio.Text = c.precio.ToString();
+            cboEquipo.Text = c.Equipo.nombre;
+            cboModelo.Text = c.Modelo.NombreModelo;
+
+
+        }
+
+        private void btnGuardarModelo_Click(object sender, EventArgs e)
+        {
+            if (txtNombreModelo.Text.Equals(""))
+            {
+                MessageBox.Show("El campo no puede ser vacio", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                if (txtCodModelo.Text.Equals(""))
+                {
+                    MessageBox.Show(GuardarModelos(0), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+                }
+                else
+                {
+                    MessageBox.Show(GuardarModelos(1), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+                }
+                ListarComboModelo();
+                limpiarModelo();
+
+            }
         }
     }
 }

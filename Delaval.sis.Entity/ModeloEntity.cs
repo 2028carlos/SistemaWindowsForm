@@ -8,7 +8,7 @@ namespace Delaval.sis.Entity
 {
    public  class ModeloEntity
     {
-        public int idModelos { get; set; }
+        public string idModelos { get; set; }
         public string NombreModelo { get; set; }
     }
 }

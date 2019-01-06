@@ -9,7 +9,7 @@ namespace Delaval.sis.Entity
  public  class ArticuloEntity
     {
 
-        public int idArticuloc { get; set; }
+        public string idArticulo { get; set; }
         public int codigo { get; set; }
         public string descripcion { get; set; }
         public  string unidadmedida { get; set; }
@@ -17,7 +17,7 @@ namespace Delaval.sis.Entity
         public string programa { get; set; }
         public decimal precio { get; set; }
 
-        public int Equipo { get; set; }
-        public int Modelo { get; set; }
+        public EquipoEntity Equipo { get; set; }
+        public ModeloEntity Modelo { get; set; }
     }
 }

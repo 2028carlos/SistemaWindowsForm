@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Articulos = new System.Windows.Forms.TabPage();
+            this.txtIdArticulo = new System.Windows.Forms.TextBox();
             this.btnListarArticulos = new System.Windows.Forms.Button();
             this.EliminarArticulos = new System.Windows.Forms.Button();
             this.btnGuardarArticulos = new System.Windows.Forms.Button();
@@ -60,10 +61,10 @@
             this.txtEquipo = new System.Windows.Forms.TextBox();
             this.txtCodEquipo = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnBuscarModelo = new System.Windows.Forms.Button();
+            this.btnGuardarModelo = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.txtGuardarModelo = new System.Windows.Forms.TextBox();
+            this.txtNombreModelo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtCodModelo = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -87,6 +88,7 @@
             // 
             // Articulos
             // 
+            this.Articulos.Controls.Add(this.txtIdArticulo);
             this.Articulos.Controls.Add(this.btnListarArticulos);
             this.Articulos.Controls.Add(this.EliminarArticulos);
             this.Articulos.Controls.Add(this.btnGuardarArticulos);
@@ -99,6 +101,13 @@
             this.Articulos.Text = "Articulos";
             this.Articulos.UseVisualStyleBackColor = true;
             // 
+            // txtIdArticulo
+            // 
+            this.txtIdArticulo.Location = new System.Drawing.Point(105, 19);
+            this.txtIdArticulo.Name = "txtIdArticulo";
+            this.txtIdArticulo.Size = new System.Drawing.Size(63, 22);
+            this.txtIdArticulo.TabIndex = 19;
+            // 
             // btnListarArticulos
             // 
             this.btnListarArticulos.Location = new System.Drawing.Point(615, 10);
@@ -107,6 +116,7 @@
             this.btnListarArticulos.TabIndex = 20;
             this.btnListarArticulos.Text = "Listar";
             this.btnListarArticulos.UseVisualStyleBackColor = true;
+            this.btnListarArticulos.Click += new System.EventHandler(this.btnListarArticulos_Click);
             // 
             // EliminarArticulos
             // 
@@ -384,10 +394,10 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button9);
-            this.groupBox2.Controls.Add(this.button5);
+            this.groupBox2.Controls.Add(this.btnBuscarModelo);
+            this.groupBox2.Controls.Add(this.btnGuardarModelo);
             this.groupBox2.Controls.Add(this.button6);
-            this.groupBox2.Controls.Add(this.txtGuardarModelo);
+            this.groupBox2.Controls.Add(this.txtNombreModelo);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.txtCodModelo);
             this.groupBox2.Controls.Add(this.label11);
@@ -398,24 +408,25 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Modelos";
             // 
-            // button9
+            // btnBuscarModelo
             // 
-            this.button9.Location = new System.Drawing.Point(212, 21);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 30);
-            this.button9.TabIndex = 11;
-            this.button9.Text = "Buscar";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.btnBuscarModelo.Location = new System.Drawing.Point(212, 21);
+            this.btnBuscarModelo.Name = "btnBuscarModelo";
+            this.btnBuscarModelo.Size = new System.Drawing.Size(75, 30);
+            this.btnBuscarModelo.TabIndex = 11;
+            this.btnBuscarModelo.Text = "Buscar";
+            this.btnBuscarModelo.UseVisualStyleBackColor = true;
+            this.btnBuscarModelo.Click += new System.EventHandler(this.button9_Click);
             // 
-            // button5
+            // btnGuardarModelo
             // 
-            this.button5.Location = new System.Drawing.Point(212, 144);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 30);
-            this.button5.TabIndex = 9;
-            this.button5.Text = "Guardar";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnGuardarModelo.Location = new System.Drawing.Point(212, 144);
+            this.btnGuardarModelo.Name = "btnGuardarModelo";
+            this.btnGuardarModelo.Size = new System.Drawing.Size(75, 30);
+            this.btnGuardarModelo.TabIndex = 9;
+            this.btnGuardarModelo.Text = "Guardar";
+            this.btnGuardarModelo.UseVisualStyleBackColor = true;
+            this.btnGuardarModelo.Click += new System.EventHandler(this.btnGuardarModelo_Click);
             // 
             // button6
             // 
@@ -426,12 +437,12 @@
             this.button6.Text = "Eliminar";
             this.button6.UseVisualStyleBackColor = true;
             // 
-            // txtGuardarModelo
+            // txtNombreModelo
             // 
-            this.txtGuardarModelo.Location = new System.Drawing.Point(95, 102);
-            this.txtGuardarModelo.Name = "txtGuardarModelo";
-            this.txtGuardarModelo.Size = new System.Drawing.Size(192, 22);
-            this.txtGuardarModelo.TabIndex = 5;
+            this.txtNombreModelo.Location = new System.Drawing.Point(95, 102);
+            this.txtNombreModelo.Name = "txtNombreModelo";
+            this.txtNombreModelo.Size = new System.Drawing.Size(192, 22);
+            this.txtNombreModelo.TabIndex = 5;
             // 
             // label10
             // 
@@ -472,6 +483,7 @@
             this.Load += new System.EventHandler(this.MantenimientoArticulos_Load);
             this.tabControl1.ResumeLayout(false);
             this.Articulos.ResumeLayout(false);
+            this.Articulos.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage1.ResumeLayout(false);
@@ -519,10 +531,11 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtEquipo;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnBuscarModelo;
+        private System.Windows.Forms.Button btnGuardarModelo;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.TextBox txtGuardarModelo;
+        private System.Windows.Forms.TextBox txtNombreModelo;
         private System.Windows.Forms.ComboBox cboPrograma;
+        private System.Windows.Forms.TextBox txtIdArticulo;
     }
 }
