@@ -89,7 +89,7 @@ namespace Delaval.sis.Win
             int idequipo = objeto.Key;
 
             KeyValuePair<int, string> objeto1 = (KeyValuePair<int, string>)cboModelo.SelectedItem;
-            int modelo = objeto.Key;
+            int modelo = objeto1.Key;
 
 
             int pro = Convert.ToInt32(cboProgramacion.Text);
@@ -179,7 +179,9 @@ namespace Delaval.sis.Win
                         mod.NombreModelo= row.Cells[9].Value.ToString();
                         art.Modelo = mod;
                             total1 =  art.precio + total1;
-                            
+                        art.total = total1;
+
+
 
                         newlista.Add(art);
 

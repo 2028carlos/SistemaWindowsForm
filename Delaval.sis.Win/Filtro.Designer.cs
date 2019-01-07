@@ -50,9 +50,9 @@
             // cboModelo
             // 
             this.cboModelo.FormattingEnabled = true;
-            this.cboModelo.Location = new System.Drawing.Point(293, 55);
+            this.cboModelo.Location = new System.Drawing.Point(250, 55);
             this.cboModelo.Name = "cboModelo";
-            this.cboModelo.Size = new System.Drawing.Size(205, 24);
+            this.cboModelo.Size = new System.Drawing.Size(247, 24);
             this.cboModelo.TabIndex = 1;
             // 
             // cboProgramacion
@@ -70,9 +70,9 @@
             // cboEquipos
             // 
             this.cboEquipos.FormattingEnabled = true;
-            this.cboEquipos.Location = new System.Drawing.Point(45, 55);
+            this.cboEquipos.Location = new System.Drawing.Point(34, 55);
             this.cboEquipos.Name = "cboEquipos";
-            this.cboEquipos.Size = new System.Drawing.Size(217, 24);
+            this.cboEquipos.Size = new System.Drawing.Size(200, 24);
             this.cboEquipos.TabIndex = 4;
             this.cboEquipos.SelectedValueChanged += new System.EventHandler(this.cboEquipos_SelectedValueChanged);
             // 
@@ -119,6 +119,7 @@
             // 
             // Column1
             // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column1.HeaderText = "Seleccione";
             this.Column1.Name = "Column1";
             // 
@@ -143,11 +144,13 @@
             // 
             this.unidadmedida.HeaderText = "Unidad Medida";
             this.unidadmedida.Name = "unidadmedida";
+            this.unidadmedida.Visible = false;
             // 
             // unidad
             // 
             this.unidad.HeaderText = "Unidad";
             this.unidad.Name = "unidad";
+            this.unidad.Visible = false;
             // 
             // programa
             // 

@@ -16,7 +16,8 @@ namespace Delaval.sis.Entity
         public int unidad { get; set; }
         public string programa { get; set; }
         public decimal precio { get; set; }
-
+        public decimal total { get; set; }
+        public int cantidad { get; set; }
         public EquipoEntity Equipo { get; set; }
         public ModeloEntity Modelo { get; set; }
     }

@@ -16,7 +16,7 @@ namespace Delaval.sis.Win.Reporte
         public xrReporteMateriales(List<ArticuloEntity> lst)
         {
             InitializeComponent();
-            this.objectDataSource1.DataSource = lst;
+            this.objectDataSource2.DataSource = lst;
             this.DataSource = lst;
             lista = lst;
            
