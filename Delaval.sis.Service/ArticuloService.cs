@@ -25,5 +25,9 @@ namespace Delaval.sis.Service
             return ar.listarArticulosXdescripcion(c);
         }
 
+        public List<ArticuloEntity> listarConCombos(int a ,int b ,int c)
+        {
+            return ar.listarConCombos(a,b,c);
+        }
     }
 }

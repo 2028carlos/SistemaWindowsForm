@@ -24,5 +24,10 @@ namespace Delaval.sis.Service
         {
             return md.InsertandUpdateModelo(c, op);
         }
+
+        public List<ModeloEntity> listarporEquipo(int c)
+        {
+            return md.listarporEquipo(c);
+        }
     }
 }

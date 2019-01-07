@@ -133,5 +133,45 @@ namespace Delaval.sis.Dao
             return valor;
         }
 
+
+        //LISTAR MODELOS POR EQUIPO
+        public List<ModeloEntity> listarporEquipo(int equipo)
+        {
+            List<ModeloEntity> lista = new List<ModeloEntity>();
+
+            ModeloEntity p;
+           
+            
+            try
+            {
+                cmdCliente = new MySqlCommand("sp_modelobyEquipo");
+                cmdCliente.CommandType = CommandType.StoredProcedure;
+                cmdCliente.Connection = cn.abrirConexion();
+                cmdCliente.Parameters.AddWithValue("equipo", equipo);
+              
+
+                lector = cmdCliente.ExecuteReader();
+
+                while (lector.Read())
+                {
+                    p = new ModeloEntity();
+
+                    p.idModelos = lector[0].ToString();
+                    p.NombreModelo = lector[1].ToString();
+                    lista.Add(p);
+                }
+            }
+            catch (Exception)
+            {
+
+                //MessageBox.Show("Busqueda Invalida", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return lista;
+        }
+
+
+
+
     }
 }
